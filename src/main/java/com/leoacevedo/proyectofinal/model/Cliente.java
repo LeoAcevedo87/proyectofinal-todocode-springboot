@@ -1,4 +1,4 @@
-package com.leoacevedo.proyectofinal.dto;
+package com.leoacevedo.proyectofinal.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
