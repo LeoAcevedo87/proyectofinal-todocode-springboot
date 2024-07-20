@@ -15,27 +15,27 @@ public class VentaService implements IVentaService{
     
     @Override
     public void createVenta(Venta venta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ventaRepo.save(venta);
     }
 
     @Override
     public List<Venta> getListVentas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return ventaRepo.findAll();
     }
 
     @Override
     public Venta getVenta(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return ventaRepo.findById(id).orElse(null);
     }
 
     @Override
     public void deleteVenta(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ventaRepo.deleteById(id);
     }
 
     @Override
     public void editVenta(Venta venta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.createVenta(venta);
     }
 
 }
