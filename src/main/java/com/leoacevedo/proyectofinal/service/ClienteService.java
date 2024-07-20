@@ -23,8 +23,18 @@ public class ClienteService implements IClienteService {
     }
 
     @Override
-    public void editCliente(Cliente cli) { //<U>
-        this.createCliente(cli);
+    public void editCliente(Long idCliente, Cliente cliente) {
+        Cliente clienteExistente = clienteRepo.findById(idCliente).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+        //Cliente clienteExistente = clienteRepo.findById(idCliente).orElse(null); PODRIA SER ASI TAMBIEN
+                
+        
+        // Actualiza los campos necesarios del cliente existente
+        clienteExistente.setNombre(cliente.getNombre());
+        clienteExistente.setApellido(cliente.getApellido());
+        clienteExistente.setDni(cliente.getDni());
+        
+        //Guarda el cliente editado
+        clienteRepo.save(clienteExistente);
     }
 
     @Override

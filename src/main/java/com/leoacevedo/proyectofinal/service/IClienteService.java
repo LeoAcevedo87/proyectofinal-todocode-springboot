@@ -14,5 +14,5 @@ public interface IClienteService {
     
     public void deleteCliente(Long id);
     
-    public void editCliente(Cliente cli);
+    public void editCliente(Long idCliente, Cliente cli);
 }
