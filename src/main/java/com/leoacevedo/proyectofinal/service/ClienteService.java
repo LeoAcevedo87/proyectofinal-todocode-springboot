@@ -26,7 +26,6 @@ public class ClienteService implements IClienteService {
     public void editCliente(Long idCliente, Cliente cliente) {
         Cliente clienteExistente = clienteRepo.findById(idCliente).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
         //Cliente clienteExistente = clienteRepo.findById(idCliente).orElse(null); PODRIA SER ASI TAMBIEN
-                
         
         // Actualiza los campos necesarios del cliente existente
         clienteExistente.setNombre(cliente.getNombre());

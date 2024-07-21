@@ -33,9 +33,24 @@ public class ProductoService implements IProductoService{
         produRepo.deleteById(id);
     }
 
+//    @Override
+//    public void editProducto(Producto produc) {
+//        this.createProducto(produc);
+//    }
+    
     @Override
-    public void editProducto(Producto produc) {
-        this.createProducto(produc);
+    public void editProducto(Long codigo_producto, Producto produ) {
+        Producto productoExistente = produRepo.findById(codigo_producto).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+        //Producto productoExistente = produRepo.findById(idProducto).orElse(null); PODRIA SER ASI TAMBIEN
+        
+        // Actualiza los campos necesarios del cliente existente
+        productoExistente.setNombre(produ.getNombre());
+        productoExistente.setMarca(produ.getMarca());
+        productoExistente.setCosto(produ.getCosto());
+        productoExistente.setCantidadDisponible(produ.getCantidadDisponible());
+        
+        //Guarda el producto editado
+        produRepo.save(productoExistente);
     }
 
 }

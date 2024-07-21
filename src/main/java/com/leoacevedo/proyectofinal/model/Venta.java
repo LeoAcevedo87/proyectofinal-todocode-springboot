@@ -22,8 +22,6 @@ public class Venta { //cada venta posee una lista de productos y uno y solo un c
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long codigo_venta;
-    
-    @Temporal(TemporalType.DATE)
     private LocalDate fechaVenta;
     
     private Double total; 
