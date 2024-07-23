@@ -33,9 +33,23 @@ public class VentaService implements IVentaService{
         ventaRepo.deleteById(id);
     }
 
+//    @Override
+//    public void editVenta(Venta venta) {
+//        this.createVenta(venta);
+//    }
+
     @Override
-    public void editVenta(Venta venta) {
-        this.createVenta(venta);
+    public void editVenta(Long codigo_venta, Venta venta) {
+        Venta ventaExistente = ventaRepo.findById(codigo_venta).orElse(null);
+        
+        // Actualiza los campos necesarios de la venta existente
+        ventaExistente.setFecha_venta(venta.getFecha_venta());
+        ventaExistente.setTotal(venta.getTotal());
+        ventaExistente.setListaProductos(venta.getListaProductos());
+        ventaExistente.setUnCliente(venta.getUnCliente());
+        
+        //Guarda el producto editado
+        ventaRepo.save(ventaExistente);
     }
 
 }
