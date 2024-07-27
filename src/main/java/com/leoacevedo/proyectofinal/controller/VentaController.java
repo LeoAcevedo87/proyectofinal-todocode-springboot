@@ -49,4 +49,7 @@ public class VentaController {
     public List<Venta> listarVentas(){
         return ventaService.getListVentas();
     }
+    
+    
+    
 }

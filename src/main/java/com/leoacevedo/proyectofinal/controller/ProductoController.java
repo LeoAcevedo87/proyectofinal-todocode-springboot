@@ -54,4 +54,16 @@ public class ProductoController {
     public List<Producto> listarClientes(){
         return produService.getListProductos();
     }
+    
+    //Obtener todos los productos cuya cantidad_disponible sea menor a 5 
+    @GetMapping("/productos/falta_stock")
+    public List<Producto> faltaStock(){
+        return produService.faltaStock();
+    }
+    
+    //Obtener la lista de productos de una determinada venta
+    @GetMapping("/ventas/productos/{codigo_venta}")
+    public List<Producto> productosDeVenta(@PathVariable Long codigo_venta){
+        return produService.productosDeVenta(codigo_venta);
+    }
 }

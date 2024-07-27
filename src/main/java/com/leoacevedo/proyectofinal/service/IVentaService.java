@@ -14,7 +14,6 @@ public interface IVentaService {
     
     public void deleteVenta(Long id);
     
-    //public void editVenta(Venta venta);
-    
     public void editVenta(Long codigo_venta, Venta venta);
+    
 }

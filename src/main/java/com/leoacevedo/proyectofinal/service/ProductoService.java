@@ -2,7 +2,10 @@
 package com.leoacevedo.proyectofinal.service;
 
 import com.leoacevedo.proyectofinal.model.Producto;
+import com.leoacevedo.proyectofinal.model.Venta;
 import com.leoacevedo.proyectofinal.repository.IProductoRepository;
+import com.leoacevedo.proyectofinal.repository.IVentaRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +15,8 @@ public class ProductoService implements IProductoService{
     
     @Autowired 
     private IProductoRepository produRepo;
+    @Autowired
+    private IVentaRepository ventaRepo;
     
     @Override
     public void createProducto(Producto produc) {
@@ -53,4 +58,27 @@ public class ProductoService implements IProductoService{
         produRepo.save(productoExistente);
     }
 
+    @Override
+    public List<Producto> faltaStock() {
+        
+        List<Producto> listaProductos = produRepo.findAll();
+        List<Producto> prodSinStock = new ArrayList<>();
+        
+        for (Producto produ : listaProductos) {
+            if(produ.getCantidadDisponible() < 5){
+                prodSinStock.add(produ);
+            }
+        }
+        return prodSinStock;
+    }    
+    
+    @Override
+    public List<Producto> productosDeVenta(Long id) {
+        Venta venta = ventaRepo.findById(id).orElse(null);
+        
+        List<Producto> listaProduVenta = new ArrayList<>();
+        listaProduVenta = venta.getListaProductos();
+        return listaProduVenta;
+    }
+    
 }
