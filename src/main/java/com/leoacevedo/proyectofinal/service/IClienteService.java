@@ -15,4 +15,9 @@ public interface IClienteService {
     public void deleteCliente(Long id);
     
     public void editCliente(Long idCliente, Cliente cli);
+    
+    public List<Cliente> buscarNombreApellido(String texto);
+    
+     public Cliente buscarDni(String dni);
+    
 }

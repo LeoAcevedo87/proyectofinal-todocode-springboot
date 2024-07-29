@@ -19,4 +19,8 @@ public interface IProductoService {
     public List<Producto> faltaStock();
     
     public List<Producto> productosDeVenta(Long id);
+    
+    public List<Producto> buscarTextoProductos(String texto);
+
+    public List<Producto> buscarCostoProducto(Double costo_minimo, Double costo_maximo);
 }

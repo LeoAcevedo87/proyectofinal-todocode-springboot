@@ -81,4 +81,35 @@ public class ProductoService implements IProductoService{
         return listaProduVenta;
     }
     
+    //extra: buscar productos x texto ingresado
+    @Override 
+    public List<Producto> buscarTextoProductos(String texto) { //Muestra productos que contengan el texto a buscar
+        
+        List<Producto> listaProductos = produRepo.findAll();
+        List<Producto> productosEncontrados = new ArrayList<>();
+        
+        for (Producto producto : listaProductos) {
+            if(producto.getNombre().toLowerCase().contains(texto.toLowerCase())){
+                productosEncontrados.add(producto);
+            }
+            
+        }
+        return productosEncontrados;
+    }
+    
+    //extra: buscar productos entre un costo minimo y un costo máximo
+    @Override
+    public List<Producto> buscarCostoProducto(Double costo_minimo, Double costo_maximo) {
+        
+        List<Producto> listaProductos = produRepo.findAll();
+        List<Producto> productosfiltrados = new ArrayList<>();
+        
+        for (Producto producto : listaProductos) {
+            if(producto.getCosto() >= costo_minimo && producto.getCosto() <= costo_maximo ){
+                productosfiltrados.add(producto);
+            }            
+        }        
+        return productosfiltrados;
+    }  
+    
 }

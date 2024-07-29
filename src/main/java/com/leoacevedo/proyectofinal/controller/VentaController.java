@@ -72,4 +72,17 @@ public class VentaController {
     public String mayor_venta(){
         return ventaService.getMayorVenta();        
     }
+    
+    //extra: buscar ventas mayores a valor ingresado
+    @GetMapping("/ventas/mayores_a/{monto}")
+    public List<Venta> mayoresA(@PathVariable Double monto){
+        return ventaService.getListVentasMayoresA(monto);
+    }
+    
+    //extra: buscar ventas menores a valor ingresado
+    @GetMapping("/ventas/menores_a/{monto}")
+    public List<Venta> menoresA(@PathVariable Double monto){
+        return ventaService.getListVentasMenoresA(monto);
+    }
+    
 }

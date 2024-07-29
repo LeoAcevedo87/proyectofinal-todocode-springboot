@@ -2,6 +2,7 @@ package com.leoacevedo.proyectofinal.service;
 
 import com.leoacevedo.proyectofinal.model.Cliente;
 import com.leoacevedo.proyectofinal.repository.IClienteRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,25 @@ public class ClienteService implements IClienteService {
     @Override
     public List<Cliente> getListClientes() {
         return clienteRepo.findAll();
+    }
+
+    @Override
+    public List<Cliente> buscarNombreApellido(String texto) {
+        List<Cliente> listaClientes = clienteRepo.findAll();
+        List<Cliente> clientesEncontrados = new ArrayList<>();
+        
+        for (Cliente cliente : listaClientes) {
+            if(cliente.getNombre().toLowerCase().contains(texto.toLowerCase()) || 
+                    cliente.getApellido().toLowerCase().contains(texto.toLowerCase())) {
+                clientesEncontrados.add(cliente);
+            }
+        }
+        return clientesEncontrados;
+    }
+
+    @Override
+    public Cliente buscarDni(String dni) {
+                
+        return clienteRepo.findByDni(dni);
     }
 }

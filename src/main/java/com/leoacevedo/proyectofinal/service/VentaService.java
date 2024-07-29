@@ -122,4 +122,35 @@ public class VentaService implements IVentaService{
                                         " -- Nombre Cliente: " + cvpDTO.getNombre_cliente() +
                                         " -- Apellido Cliente: " + cvpDTO.getApellido_cliente();
     }
+    
+    
+    //extra: buscar venta menores a valor ingresado
+    @Override
+    public List<Venta> getListVentasMenoresA(Double total) {
+        List<Venta> listaVenta = ventaRepo.findAll();
+        List<Venta> ventasFiltradas = new ArrayList<>();
+        
+        for (Venta venta : listaVenta) {
+            if(venta.getTotal() < total){
+                ventasFiltradas.add(venta);
+            }
+        }
+        
+        return ventasFiltradas;
+    }
+
+    //extra: buscar venta mayores a valor ingresado
+    @Override
+    public List<Venta> getListVentasMayoresA(Double total) {
+        List<Venta> listaVenta = ventaRepo.findAll();
+        List<Venta> ventasFiltradas = new ArrayList<>();
+        
+        for (Venta venta : listaVenta) {
+            if(venta.getTotal() > total){
+                ventasFiltradas.add(venta);
+            }
+        }
+        
+        return ventasFiltradas;
+    }
 }

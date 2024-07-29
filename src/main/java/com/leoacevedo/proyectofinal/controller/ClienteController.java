@@ -50,4 +50,15 @@ public class ClienteController {
         return cliService.getListClientes();
     }
     
+    //extra: buscar clientes por nombre o apellido, segun texto ingresado
+    @GetMapping("/clientes/buscar_nombre_apllido/{texto_cliente}")    
+    public List<Cliente> buscarNombreApellido(@PathVariable String texto_cliente) {
+        return cliService.buscarNombreApellido(texto_cliente);
+    }
+    
+    //extra: buscar clientes por dni
+    @GetMapping("/clientes/buscar_dni/{dni_cliente}")    
+    public Cliente buscarDni(@PathVariable String dni_cliente) {
+        return cliService.buscarDni(dni_cliente);
+    }
 }

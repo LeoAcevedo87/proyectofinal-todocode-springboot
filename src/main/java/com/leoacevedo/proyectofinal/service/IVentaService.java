@@ -20,4 +20,8 @@ public interface IVentaService {
     public String montoVentasPorFecha(LocalDate fecha);
     
     public String getMayorVenta();
+    
+    public List<Venta> getListVentasMenoresA(Double total);
+    
+    public List<Venta> getListVentasMayoresA(Double total);
 }
